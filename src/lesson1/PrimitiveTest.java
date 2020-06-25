@@ -15,5 +15,6 @@ public class PrimitiveTest {
 
 		// < <= > >= == !=
 		System.err.println(f1 > 0 ? ">" : "<");
+		
 	}
 }
