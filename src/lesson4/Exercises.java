@@ -4,8 +4,8 @@ public class Exercises {
 	public static void main(String[] args) {
 		exercise1();
 		exercise2();
-		exercise3();
-		exercise4();
+//		exercise3();
+//		exercise4();
 	}
 
 	static void exercise1() {
@@ -122,8 +122,9 @@ class Factorial {
 		return value;
 	}
 	
-	public static Factorial getFactorial(int argument) {
+	public static Factorial getFactorial(int argument) { // Factory
 		// TODO: implement body (return argument! value)
+		
 	}
 }
 
