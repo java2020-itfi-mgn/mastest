@@ -36,6 +36,7 @@ public class StringTest {
 		System.err.println("Equals ? "+s.equals("sd"));
 		System.err.println("Equals ? "+s.equals("sdsd"));
 		System.err.println("Equals ignore case ? "+s.equalsIgnoreCase("Sdsd"));
+		
 
 		System.err.println("Compare to ? "+s.compareTo("sd"));				// <0, ==0, >0
 		System.err.println("Compare to ? "+s.compareToIgnoreCase("sd"));	// <0, ==0, >0
