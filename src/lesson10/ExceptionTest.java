@@ -12,9 +12,10 @@ public class ExceptionTest {
 //				-
 //				-
 //				- RuntimeException - unchecked exceptions 
-//					-
-//					-
-//					-
+//					- NullPointerException
+//					- IllegalArgumentException
+//					- IllegalStateException
+//					- UnsupportedOperationException
 //				-
 		switch (code) {
 			case 0: throw new RuntimeException("Runtime"); 
@@ -24,13 +25,24 @@ public class ExceptionTest {
 		}
 	}
 
+	static void nestedTest(int code) throws Throwable {
+		try{test(code);
+		} catch (Exception exc) {
+//			System.err.println("nested Exception: "+exc.getMessage());
+		} finally {
+			System.err.println("NESTED Finally!!!");
+		}
+	}
+	
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 		Throwable	t = new Throwable("Message text");
 		
+		t.printStackTrace();
+		
 		for (int index = 0; index <= 3; index++) {
 			try {
-				test(index);
+				nestedTest(index);
 				System.err.println("Success!");
 //			} catch(NullPointerException | IllegalArgumentException exc) {
 //				System.err.println("???: "+exc.getMessage());
@@ -40,10 +52,10 @@ public class ExceptionTest {
 				System.err.println("Exception: "+exc.getMessage());
 			} catch(Throwable exc) {
 				System.err.println("Throwable: "+exc.getMessage());
+				System.err.println("Cause: "+exc.getCause());
 			} finally {
 				System.err.println("Finally!!!");
 			}
 		}
 	}
-
 }
