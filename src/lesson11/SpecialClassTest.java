@@ -67,6 +67,23 @@ public class SpecialClassTest {
 				System.err.println("INTERFACE K:LKL:KL:KL:SDKF"+abcde);
 			}
 		}		
+		
+		MyEnum	myEnum = MyEnum.MY_FIRST;
+		
+		if (myEnum == MyEnum.MY_FIRST) {
+			System.err.println("FIRST!!!!");
+		}
+		
+		switch (myEnum) {		// switch (myEnum.ordinal()) {
+			case MY_FIRST :		// MY_FIRST.ordinal() = 0
+				System.err.println("ASDASASAS");
+				break;
+			case MY_SECOND :	// MY_SECOND.ordinal() = 1
+				System.err.println("90568908");
+				break;
+			default :
+				System.err.println("??????");
+		}
 	}
 
 	public interface MyInterface {
@@ -98,5 +115,22 @@ public class SpecialClassTest {
 		public StaticInnerClass() {
 			System.err.println("Constructor: "+x);
 		}
+	}
+}
+
+enum MyEnum {	// final class MyEnum extends java.lang.Enum
+	MY_FIRST("This is a first line"),	// public static final MyEnum MY_FIRST = new MyEnum("MY_FIRST",0);
+	MY_SECOND("This is a second line"),	// public static final MyEnum MY_SECOND = new MyEnum("MY_SECOND",1);
+	MY_THIRD("This is a third line");	// public static final MyEnum MY_THIRD = new MyEnum("MY_THIRD",2);
+	
+	private final String comment;
+	
+	MyEnum(String comment) {		// MyEnum(String name, int ordinal, String comment)
+		// super(name.ordinal);
+		this.comment = comment;
+	}
+	
+	public String getComment() {
+		return comment;
 	}
 }
