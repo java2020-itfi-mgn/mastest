@@ -42,18 +42,36 @@ public class IOTest {
 //			result = baos.toByteArray();
 		} // finally {baos.close()}
 
-		try(final InputStream	bais = new FileInputStream("d:/test.txt");//new ByteArrayInputStream(result);
-			final Reader		rdr = new InputStreamReader(bais);
+		try(final InputStream		bais = new FileInputStream("d:/test.txt");//new ByteArrayInputStream(result);
+			final Reader			rdr = new InputStreamReader(bais);
 			final BufferedReader	brdr = new BufferedReader(rdr)) {
 			
-//			char[]		buffer = new char[100];
+//			char[]		buffer = new char[100];			WRONG method to read!
 //			
 //			int 		length = rdr.read(buffer);
+
+//			int 		length, displ = 0;				RIGHT method to read
+//			
+//			while ((length = rdr.read(buffer,displ,buffer.length-displ)) > 0) {	// 
+//				displ += length;
+//			}
 			
 //			System.err.println("Length="+length);
 //			System.err.println("Content="+new String(buffer,0,length));
 			System.err.println("Content="+brdr.readLine());
 		}
 	
+	}
+	
+	static void process(final InputStream is) {
+		// is - DON'T CLOSE!!!
+		// .read()
+		// Буферизованный ввод не открывать!
+	}
+
+	static void process(final OutputStream is) {
+		// is - DON'T CLOSE!!!
+		// .write()
+		// .flush()
 	}
 }
