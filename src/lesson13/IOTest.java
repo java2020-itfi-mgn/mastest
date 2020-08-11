@@ -12,6 +12,8 @@ import java.io.OutputStream;
 import java.io.OutputStreamWriter;
 import java.io.Reader;
 import java.io.Writer;
+import java.util.zip.GZIPInputStream;
+import java.util.zip.GZIPOutputStream;
 
 public class IOTest {
 
@@ -32,7 +34,8 @@ public class IOTest {
 						
 //		byte[]	result;
 		try(final OutputStream			baos = new FileOutputStream("d:/test.txt");
-			final Writer				wr = new OutputStreamWriter(baos)) {	// implements java.lang.AutoCloseable
+			final GZIPOutputStream		gzos = new GZIPOutputStream(baos);		
+			final Writer				wr = new OutputStreamWriter(gzos)) {	// implements java.lang.AutoCloseable
 																				// java.io.Closeable
 			wr.write("test string");
 			wr.flush();
@@ -43,7 +46,8 @@ public class IOTest {
 		} // finally {baos.close()}
 
 		try(final InputStream		bais = new FileInputStream("d:/test.txt");//new ByteArrayInputStream(result);
-			final Reader			rdr = new InputStreamReader(bais);
+			final GZIPInputStream	gzis = new GZIPInputStream(bais);		
+			final Reader			rdr = new InputStreamReader(gzis);
 			final BufferedReader	brdr = new BufferedReader(rdr)) {
 			
 //			char[]		buffer = new char[100];			WRONG method to read!
